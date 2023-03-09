@@ -7,8 +7,18 @@ move_dict = {
     (0, 1): "R"
 }
 
-def add_tuples(t1, t2):
-    return (t1[0] + t2[0], t1[1] + t2[1])
+def add_tuples(t1, t2, R, C):
+    new_x = t1[0] + t2[0]
+    new_y = t1[1] + t2[1]
+    if new_x < 0:
+        new_x = R - 1
+    if new_x >= R:
+        new_x = 0
+    if new_y < 0:
+        new_y = C - 1
+    if new_y >= C:
+        new_y = 0
+    return (new_x, new_y)
     
     
 def decide_move_best_neighbour(snake_pos, matrix, R, C):
@@ -17,16 +27,9 @@ def decide_move_best_neighbour(snake_pos, matrix, R, C):
     best_score = -inf
     
     for move in moves:
-        new_x, new_y = add_tuples(snake_pos, move)
+        new_x, new_y = add_tuples(snake_pos, move, R, C)
         
-        if new_x < 0:
-            new_x = R - 1
-        if new_x >= R:
-            new_x = 0
-        if new_y < 0:
-            new_y = C - 1
-        if new_y >= C:
-            new_y = 0
+        
         
         score = matrix[new_x][new_y]
         
@@ -37,4 +40,4 @@ def decide_move_best_neighbour(snake_pos, matrix, R, C):
     if best_score == -inf:
         return -1, (new_x, new_y)        
     
-    return move_dict[best_move], (new_x, new_y)
+    return move_dict[best_move], add_tuples(snake_pos, best_move, R, C)
