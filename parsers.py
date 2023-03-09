@@ -5,7 +5,7 @@ def get_data(file_name):
     with open(file_name, "r") as f:
         # data = file.readline().strip('\n')
 
-        R, C, S = tuple(map(int, f.readline().strip("\n").split()))
+        C, R, S = tuple(map(int, f.readline().strip("\n").split()))
         print(R, C, S)
 
         snake_lenghts = list(map(int, f.readline().strip("\n").split()))
@@ -42,7 +42,7 @@ def main():
         if not moves:
             data += '\n'
             continue
-        
+        print(snake_pos)
         data += f"{snake_pos[0]} {snake_pos[1]} {' '.join(snake_moves)}\n"
 
     save_data("outputs/00-example.txt", data)
