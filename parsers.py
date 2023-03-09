@@ -39,6 +39,10 @@ def main():
 
     data = ""
     for snake_pos, snake_moves in zip(start_pos, moves):
+        if not moves:
+            data += '\n'
+            continue
+        
         data += f"{snake_pos[0]} {snake_pos[1]} {' '.join(snake_moves)}\n"
 
     save_data("outputs/00-example.txt", data)

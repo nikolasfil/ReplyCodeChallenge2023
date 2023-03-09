@@ -39,5 +39,7 @@ def decide_move_best_neighbour(snake_pos, matrix, R, C):
             best_move = move
             best_score = score
             
-            
+    if best_score == -inf:
+        return -1, (new_x, new_y)        
+    
     return move_dict[best_move], (new_x, new_y)

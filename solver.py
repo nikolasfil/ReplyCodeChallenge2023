@@ -11,6 +11,9 @@ def solve(R, C, S, snake_lenghts, matrix):
         if curr_snake_len <= 0:
             continue
         move, new_snake_pos = decide_move_best_neighbour(curr_snake_pos, matrix, R, C)
+        if move == -1:
+            moves[index] = []
+            
         snake_pos[index] = new_snake_pos
         snake_lenghts[index] -= 1
         matrix[new_snake_pos[0]][new_snake_pos[1]] = -inf
