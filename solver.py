@@ -8,10 +8,13 @@ def solve(R, C, S, snake_lenghts, matrix):
     snake_start_pos = get_snake_start_pos(matrix, S)
     snake_pos = snake_start_pos.copy()
     
-    for snake in snake_start_pos:
+    snake_lenghts = [x - 1 for x in snake_lenghts]
+    
+    for i, snake in enumerate(snake_start_pos):
+        if matrix[snake[0]][snake[1]] < 0:
+            snake_lenghts[i] = 0
         matrix[snake[0]][snake[1]] = -inf
         
-    snake_lenghts = [x - 1 for x in snake_lenghts]
     # print(snake_start_pos)
     while any(x > 0 for x in snake_lenghts):
         for index, (curr_snake_pos, curr_snake_len) in enumerate(zip(snake_pos, snake_lenghts)):

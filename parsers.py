@@ -32,11 +32,12 @@ def save_data(file, data):
 
 def main():
     files = ["inputs/00-example.txt",
-             "inputs/01-chilling-cat.txt",
-             "inputs/02-swarming-ant.txt",
-             "inputs/03-input-anti-greedy.txt",
+            #  "inputs/01-chilling-cat.txt",
+            #  "inputs/02-swarming-ant.txt",
+            #  "inputs/03-input-anti-greedy.txt",
             #  "inputs/04-input-low-points.txt",
-             "inputs/05-input-opposite-points-holes.txt"]
+            #  "inputs/05-input-opposite-points-holes.txt",
+             "inputs/06-input-reply-running-man.txt"]
     for file_name in files:
         R, C, S, snake_lenghts, matrix = get_data(file_name)
 
