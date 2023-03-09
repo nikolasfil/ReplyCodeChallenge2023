@@ -1,9 +1,23 @@
 
 def get_data(file_name):
-    with open(file_name,'r') as file:
-        data = file.readline().strip('\n')
+    with open(file_name,'r') as f:
+        # data = file.readline().strip('\n')
+
+        R, C, S = tuple(map(int, f.readline().strip('\n').split()))
+        print(R,C, S)
+
+        snake_lenghts = list(map(int, f.readline().strip('\n').split()))
+ 
+
+        matrix = [list(map(notasterisk,f.readline().strip('\n').split())) for _ in range(R)]
+        print(matrix)
+    
+    return R, C, S, snake_lenghts, matrix
         
-    return data
+def notasterisk(x):
+    if x!='*':
+        return int(x) 
+    return '*'
 
 def save_data(file,data):
     with open(file,'w') as f:
@@ -13,17 +27,8 @@ def save_data(file,data):
 def main():
     file_name = "inputs/00-example.txt"
     
-    data = get_data(file_name)
-    R, C, S = tuple(map(int, data[0].split()))
-    snake_lenghts = list(map(int, data[1].split()))
-    matrix = [row.split() for row in data[2:]]
-    for r, row in enumerate(matrix):
-        for c, value in enumerate(row):
-            if value.isdigit():
-                matrix[r][c] = int(value)
+    R, C, S, snake_lenghts, matrix=get_data(file_name)
     
-    
-    return R, C, S, snake_lenghts, matrix
     
 
 
