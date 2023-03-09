@@ -1,4 +1,4 @@
-from solver import solve
+# from solver import solve
 
 
 def get_data(file_name):
@@ -6,7 +6,7 @@ def get_data(file_name):
         # data = file.readline().strip('\n')
 
         R, C, S = tuple(map(int, f.readline().strip("\n").split()))
-        print(R, C, S)
+        # print(R, C, S)
 
         snake_lenghts = list(map(int, f.readline().strip("\n").split()))
 
@@ -15,28 +15,24 @@ def get_data(file_name):
         ]
         print(matrix)
 
-    return R, C, S, snake_lenghts, matrix
+        wormholes=[]
+        for y in range(R):
+            for x in range(C):
+                if matrix[x][y]=='*':
+                    wormholes.append((x,y))
+
+
+    return R, C, S, snake_lenghts, matrix,wormholes
 
 
 def notasterisk(x):
     if x != "*":
         return int(x)
-    # return '*'
-    return -999999
+    return '*'
+    # return -999999
 
 
-def save_data(file, data):
-    with open(file, "w") as f:
-        f.write(data)
-
-
-def main():
-    file_name = "inputs/00-example.txt"
-
-    R, C, S, snake_lenghts, matrix = get_data(file_name)
-
-    start_pos, moves = solve(R, C, S, snake_lenghts, matrix)
-
+def save_data(file, start_pos,moves):
     data = ""
     for snake_pos, snake_moves in zip(start_pos, moves):
         if not moves:
@@ -45,7 +41,21 @@ def main():
         
         data += f"{snake_pos[0]} {snake_pos[1]} {' '.join(snake_moves)}\n"
 
-    save_data("outputs/00-example.txt", data)
+
+    with open(file, "w") as f:
+        f.write(data)
+
+
+def main():
+    file_name = "inputs/00-example.txt"
+
+    C, R, S, snake_lenghts, matrix, wormholes= get_data(file_name)
+
+    print(wormholes)
+    # start_pos, moves = solve(R, C, S, snake_lenghts, matrix)
+
+    # save_data("outputs/00-example.txt", start_pos,moves)
+    
 
 
 if __name__ == "__main__":
