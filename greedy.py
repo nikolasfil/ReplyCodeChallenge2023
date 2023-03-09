@@ -40,4 +40,4 @@ def decide_move_best_neighbour(snake_pos, matrix, R, C):
             best_score = score
             
             
-    return move_dict[best_move]
+    return move_dict[best_move], (new_x, new_y)
