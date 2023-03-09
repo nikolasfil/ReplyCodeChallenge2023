@@ -19,16 +19,16 @@ def solve(R, C, S, snake_lenghts, matrix):
             move, new_snake_pos = decide_move_best_neighbour(curr_snake_pos, matrix, R, C)
             if move == -1:
                 moves[index] = [] 
+            matrix[new_snake_pos[0]][new_snake_pos[1]] = -inf
             snake_pos[index] = new_snake_pos
             snake_lenghts[index] -= 1
-            matrix[new_snake_pos[0]][new_snake_pos[1]] = -inf
             
             moves[index].append(move)
-        # for i in range(R):
-        #     for j in range(C):
-        #         print(matrix[i][j] if matrix[i][j] != -inf else "#", end=" ")
-        #     print()
-        # print()
+        for i in range(R):
+            for j in range(C):
+                print(matrix[i][j] if matrix[i][j] != -inf else "#", end=" ")
+            print()
+        print()
             
     return snake_start_pos, moves
 
