@@ -4,7 +4,7 @@ def get_data(file_name):
         # data = file.readline().strip('\n')
 
         R, C, S = tuple(map(int, f.readline().strip('\n').split()))
-        print(R,C, S)
+        print(R, C, S)
 
         snake_lenghts = list(map(int, f.readline().strip('\n').split()))
  
